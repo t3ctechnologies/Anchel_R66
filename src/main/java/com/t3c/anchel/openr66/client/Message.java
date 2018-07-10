@@ -21,8 +21,8 @@ import java.net.SocketAddress;
 
 import org.waarp.common.logging.WaarpLogger;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.client.utils.OutputFormat;
 import com.t3c.anchel.openr66.configuration.FileBasedConfiguration;
 import com.t3c.anchel.openr66.context.ErrorCode;
@@ -184,7 +184,7 @@ public class Message implements Runnable {
     }
 
     public static void main(String[] args) {
-        WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+        WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         if (logger == null) {
             logger = WaarpLoggerFactory.getLogger(Message.class);
         }

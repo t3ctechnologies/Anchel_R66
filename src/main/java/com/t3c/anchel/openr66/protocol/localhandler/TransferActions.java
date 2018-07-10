@@ -263,11 +263,7 @@ public class TransferActions extends ServerActions {
 						String outdirpath = session.getDir().getFullPath() + "out" + File.separator;
 						String filename = new File(runner.getFilename()).getName();
 						String outDirFile = outdirpath.concat(filename);
-						Properties properties = new DbConfiguration().getDbProperties();
-						String fileID = new AccessClass().TakeSpecialId(filename);
-						String bucket_name = properties.getProperty("com.sgs.bucketname");
-						String bucket_folder = properties.getProperty("com.sgs.bucketfolder");
-						new StorageAwsImpl().GetById(bucket_name, bucket_folder, fileID, outDirFile);
+						new StorageAwsImpl().GetById(outDirFile);
 					}
 
 					boolean ignoreSave = runner.shallIgnoreSave();

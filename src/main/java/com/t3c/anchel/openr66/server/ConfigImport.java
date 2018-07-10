@@ -22,8 +22,8 @@ import java.net.SocketAddress;
 import org.waarp.common.database.exception.WaarpDatabaseException;
 import org.waarp.common.logging.WaarpLogger;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.configuration.FileBasedConfiguration;
 import com.t3c.anchel.openr66.context.ErrorCode;
 import com.t3c.anchel.openr66.context.R66FiniteDualStates;
@@ -359,7 +359,7 @@ public class ConfigImport implements Runnable {
     }
 
     public static void main(String[] args) {
-        WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+		WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         if (logger == null) {
             logger = WaarpLoggerFactory.getLogger(ConfigImport.class);
         }

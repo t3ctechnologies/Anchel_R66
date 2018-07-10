@@ -26,8 +26,8 @@ import org.waarp.common.database.data.AbstractDbData.UpdatedInfo;
 import org.waarp.common.database.exception.WaarpDatabaseException;
 import org.waarp.common.logging.WaarpLogger;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.client.utils.OutputFormat;
 import com.t3c.anchel.openr66.client.utils.OutputFormat.FIELDS;
 import com.t3c.anchel.openr66.commander.CommanderNoDb;
@@ -634,7 +634,7 @@ public class RequestTransfer implements Runnable {
      * @param args
      */
     public static void main(String[] args) {
-        WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+        WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         if (logger == null) {
             logger = WaarpLoggerFactory.getLogger(RequestTransfer.class);
         }

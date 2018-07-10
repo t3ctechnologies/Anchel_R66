@@ -21,8 +21,8 @@ import java.io.File;
 
 import org.waarp.common.logging.WaarpLogger;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.configuration.FileBasedConfiguration;
 import com.t3c.anchel.openr66.database.DbConstant;
 import com.t3c.anchel.openr66.database.data.DbTaskRunner;
@@ -47,7 +47,7 @@ public class LogImport {
      * @param args
      */
     public static void main(String[] args) {
-        WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+        WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         if (logger == null) {
             logger = WaarpLoggerFactory.getLogger(LogImport.class);
         }

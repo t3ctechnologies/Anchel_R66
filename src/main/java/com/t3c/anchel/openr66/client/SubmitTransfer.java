@@ -22,8 +22,8 @@ import java.sql.Timestamp;
 import org.waarp.common.database.data.AbstractDbData;
 import org.waarp.common.database.exception.WaarpDatabaseException;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.client.utils.OutputFormat;
 import com.t3c.anchel.openr66.client.utils.OutputFormat.FIELDS;
 import com.t3c.anchel.openr66.context.ErrorCode;
@@ -125,7 +125,7 @@ public class SubmitTransfer extends AbstractTransfer {
      *            false(default) and the blocksize if different than default
      */
     public static void main(String[] args) {
-        WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+        WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         if (logger == null) {
             logger = WaarpLoggerFactory.getLogger(SubmitTransfer.class);
         }

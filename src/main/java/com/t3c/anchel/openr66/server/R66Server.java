@@ -19,8 +19,8 @@ package com.t3c.anchel.openr66.server;
 
 import org.waarp.common.logging.WaarpLogger;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.configuration.FileBasedConfiguration;
 import com.t3c.anchel.openr66.protocol.configuration.Configuration;
 import com.t3c.anchel.openr66.protocol.configuration.Messages;
@@ -41,7 +41,7 @@ public class R66Server {
 	 * @throws OpenR66ProtocolPacketException
 	 */
 	public static void initR66Server(String[] args) throws OpenR66ProtocolPacketException {
-		WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+		WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
 		logger = WaarpLoggerFactory.getLogger(R66Server.class);
 		if (args.length < 1) {
 			logger.error(Messages.getString("Configuration.NeedConfig")); //$NON-NLS-1$

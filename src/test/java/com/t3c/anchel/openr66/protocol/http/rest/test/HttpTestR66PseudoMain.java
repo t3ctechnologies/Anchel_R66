@@ -26,9 +26,9 @@ import java.io.IOException;
 import org.waarp.common.exception.CryptoException;
 import org.waarp.common.logging.WaarpLogger;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 import org.waarp.gateway.kernel.rest.RestConfiguration;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.protocol.http.rest.HttpRestR66Handler;
 import com.t3c.anchel.openr66.protocol.http.rest.HttpRestR66Handler.RESTHANDLERS;
 import com.t3c.anchel.openr66.server.R66Server;
@@ -77,7 +77,7 @@ public class HttpTestR66PseudoMain {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+		WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         final WaarpLogger logger = WaarpLoggerFactory
                 .getLogger(HttpTestR66PseudoMain.class);
         String pathTemp = "/tmp";

@@ -25,8 +25,8 @@ import org.waarp.common.database.exception.WaarpDatabaseException;
 import org.waarp.common.database.exception.WaarpDatabaseNoConnectionException;
 import org.waarp.common.logging.WaarpLogger;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.configuration.AuthenticationFileBasedConfiguration;
 import com.t3c.anchel.openr66.configuration.FileBasedConfiguration;
 import com.t3c.anchel.openr66.configuration.RuleFileBasedConfiguration;
@@ -103,7 +103,7 @@ public class ServerInitDatabase {
 	 *            limit_configuration]
 	 */
 	public static void initR66database(String[] args) {
-		WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+		WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
 		if (logger == null) {
 			logger = WaarpLoggerFactory.getLogger(ServerInitDatabase.class);
 		}

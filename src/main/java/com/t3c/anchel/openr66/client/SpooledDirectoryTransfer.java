@@ -28,16 +28,14 @@ import java.util.concurrent.TimeUnit;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
-
 import org.waarp.common.database.exception.WaarpDatabaseException;
 import org.waarp.common.filemonitor.FileMonitor;
+import org.waarp.common.filemonitor.FileMonitor.FileItem;
 import org.waarp.common.filemonitor.FileMonitorCommandFactory;
 import org.waarp.common.filemonitor.FileMonitorCommandRunnableFuture;
 import org.waarp.common.filemonitor.RegexFileFilter;
-import org.waarp.common.filemonitor.FileMonitor.FileItem;
 import org.waarp.common.logging.WaarpLogger;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 import org.waarp.common.utility.WaarpThreadFactory;
 import org.waarp.common.xml.XmlDecl;
 import org.waarp.common.xml.XmlHash;
@@ -45,6 +43,7 @@ import org.waarp.common.xml.XmlType;
 import org.waarp.common.xml.XmlUtil;
 import org.waarp.common.xml.XmlValue;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.configuration.FileBasedConfiguration;
 import com.t3c.anchel.openr66.context.ErrorCode;
 import com.t3c.anchel.openr66.context.R66Result;
@@ -1020,7 +1019,7 @@ public class SpooledDirectoryTransfer implements Runnable {
     }
 
     public static void main(String[] args) {
-        WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+        WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         if (logger == null) {
             logger = WaarpLoggerFactory.getLogger(SpooledDirectoryTransfer.class);
         }

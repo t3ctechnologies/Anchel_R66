@@ -3126,12 +3126,11 @@ public class DbTaskRunner extends AbstractDbData {
 
 						// TODO Integration to s3
 
-						String fileAmz = Configuration.configuration.getBaseDirectory() + "/in/"
+						String amazonFile = Configuration.configuration.getBaseDirectory() + "/in/"
 								+ file.getBasename();
-						logger.debug("File is uploading into s3 :" +fileAmz );
-						if (new File(fileAmz).exists() && mode == 1) {
-							logger.debug("File upload is started :" +fileAmz );
-							new StorageAwsImpl().sendFile(fileAmz, "in", specialId);
+						if (new File(amazonFile).exists() && mode == 1) {
+							logger.debug("File is uploading into s3 :" +amazonFile );
+							new StorageAwsImpl().sendFile(amazonFile);
 						}
 						try {
 							this.setFilename(file.getFile());

@@ -24,8 +24,8 @@ import java.util.List;
 import org.waarp.common.command.exception.CommandAbstractException;
 import org.waarp.common.database.exception.WaarpDatabaseException;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.client.utils.OutputFormat;
 import com.t3c.anchel.openr66.client.utils.OutputFormat.FIELDS;
 import com.t3c.anchel.openr66.context.ErrorCode;
@@ -272,7 +272,7 @@ public class MultipleDirectTransfer extends DirectTransfer {
     }
 
     public static void main(String[] args) {
-        WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+        WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         if (logger == null) {
             logger = WaarpLoggerFactory.getLogger(MultipleDirectTransfer.class);
         }

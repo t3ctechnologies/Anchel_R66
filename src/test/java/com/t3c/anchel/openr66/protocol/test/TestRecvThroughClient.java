@@ -17,10 +17,9 @@
  */
 package com.t3c.anchel.openr66.protocol.test;
 
-import io.netty.buffer.ByteBuf;
 import org.waarp.common.logging.WaarpLoggerFactory;
-import org.waarp.common.logging.WaarpSlf4JLoggerFactory;
 
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.client.RecvThroughClient;
 import com.t3c.anchel.openr66.client.RecvThroughHandler;
 import com.t3c.anchel.openr66.context.ErrorCode;
@@ -30,6 +29,8 @@ import com.t3c.anchel.openr66.protocol.configuration.Configuration;
 import com.t3c.anchel.openr66.protocol.exception.OpenR66ProtocolBusinessException;
 import com.t3c.anchel.openr66.protocol.networkhandler.NetworkTransaction;
 import com.t3c.anchel.openr66.protocol.utils.R66Future;
+
+import io.netty.buffer.ByteBuf;
 
 /**
  * Test class for Recv Through client
@@ -72,7 +73,7 @@ public class TestRecvThroughClient extends RecvThroughClient {
      * @param args
      */
     public static void main(String[] args) {
-        WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+        WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         if (logger == null) {
             logger = WaarpLoggerFactory.getLogger(TestRecvThroughHandler.class);
         }

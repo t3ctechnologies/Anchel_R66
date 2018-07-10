@@ -30,9 +30,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-import io.netty.channel.Channel;
-import io.netty.handler.codec.http.HttpMethod;
-
 import org.joda.time.DateTime;
 import org.waarp.common.crypto.Des;
 import org.waarp.common.crypto.ssl.WaarpSslUtility;
@@ -55,6 +52,7 @@ import org.waarp.gateway.kernel.rest.client.HttpRestClientSimpleResponseHandler;
 import org.waarp.gateway.kernel.rest.client.RestFuture;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.t3c.anchel.AnchelSlf4jLoggerFactory;
 import com.t3c.anchel.openr66.context.ErrorCode;
 import com.t3c.anchel.openr66.context.task.test.TestExecJavaTask;
 import com.t3c.anchel.openr66.database.DbConstant;
@@ -84,6 +82,9 @@ import com.t3c.anchel.openr66.protocol.localhandler.packet.json.JsonPacket;
 import com.t3c.anchel.openr66.protocol.localhandler.packet.json.LogJsonPacket;
 import com.t3c.anchel.openr66.protocol.localhandler.packet.json.ShutdownOrBlockJsonPacket;
 import com.t3c.anchel.openr66.protocol.localhandler.packet.json.TransferRequestJsonPacket;
+
+import io.netty.channel.Channel;
+import io.netty.handler.codec.http.HttpMethod;
 
 /**
  * @author "Frederic Bregier"
@@ -128,7 +129,7 @@ public class HttpTestRestR66Client implements Runnable {
         if (args.length > 2) {
             WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(WaarpLogLevel.DEBUG));
         } else {
-            WaarpLoggerFactory.setDefaultFactory(new WaarpSlf4JLoggerFactory(null));
+            WaarpLoggerFactory.setDefaultFactory(new AnchelSlf4jLoggerFactory(null));
         }
         logger = WaarpLoggerFactory.getLogger(HttpTestRestR66Client.class);
         Configuration.configuration.setHOST_ID(hostid);
