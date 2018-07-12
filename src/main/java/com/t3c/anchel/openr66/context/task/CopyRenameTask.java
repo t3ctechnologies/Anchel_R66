@@ -18,6 +18,10 @@
 package com.t3c.anchel.openr66.context.task;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import org.waarp.common.logging.WaarpLogger;
 import org.waarp.common.logging.WaarpLoggerFactory;
@@ -33,40 +37,49 @@ import com.t3c.anchel.openr66.protocol.utils.FileUtils;
  * 
  */
 public class CopyRenameTask extends AbstractTask {
-    /**
-     * Internal Logger
-     */
-    private static final WaarpLogger logger = WaarpLoggerFactory
-            .getLogger(CopyRenameTask.class);
+	/**
+	 * Internal Logger
+	 */
+	private static final WaarpLogger logger = WaarpLoggerFactory.getLogger(CopyRenameTask.class);
 
-    /**
-     * @param argRule
-     * @param delay
-     * @param argTransfer
-     * @param session
-     */
-    public CopyRenameTask(String argRule, int delay, String argTransfer,
-            R66Session session) {
-        super(TaskType.COPYRENAME, delay, argRule, argTransfer, session);
-    }
+	/**
+	 * @param argRule
+	 * @param delay
+	 * @param argTransfer
+	 * @param session
+	 */
+	public CopyRenameTask(String argRule, int delay, String argTransfer, R66Session session) {
+		super(TaskType.COPYRENAME, delay, argRule, argTransfer, session);
+	}
 
-    @Override
-    public void run() {
-        String finalname = argRule;
-        finalname = getReplacedValue(finalname, argTransfer.split(" ")).replace('\\', '/');
-        logger.info("Copy and Rename to " + finalname + " with " + argRule +
-                ":" + argTransfer + " and {}", session);
-        File from = session.getFile().getTrueFile();
-        File to = new File(finalname);
-        try {
-            FileUtils.copy(from, to, false, false);
-        } catch (OpenR66ProtocolSystemException e1) {
-            logger.error("Copy and Rename to " + finalname + " with " +
-                    argRule + ":" + argTransfer + " and " + session, e1);
-            futureCompletion.setFailure(new OpenR66ProtocolSystemException(e1));
-            return;
-        }
-        futureCompletion.setSuccess();
-    }
+	@Override
+	public void run() {
+		String finalname = argRule;
+		finalname = getReplacedValue(finalname, argTransfer.split(" ")).replace('\\', '/');
+		logger.info("Copy and Rename to " + finalname + " with " + argRule + ":" + argTransfer + " and {}", session);
+		File from = session.getFile().getTrueFile();
+		File to = new File(finalname);
+		try {
+			FileUtils.copy(from, to, false, false);
+		} catch (OpenR66ProtocolSystemException e1) {
+			logger.error("Copy and Rename to " + finalname + " with " + argRule + ":" + argTransfer + " and " + session,
+					e1);
+			futureCompletion.setFailure(new OpenR66ProtocolSystemException(e1));
+			return;
+		}
+		futureCompletion.setSuccess();
+		String data = "File downloaded successfuly.";
+		File gatewayFile = new File(finalname.concat("_successFile"));
+		OutputStream os;
+		try {
+			os = new FileOutputStream(gatewayFile);
+			os.write(data.getBytes(), 0, data.length());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		logger.error("Success File is created");
+	}
 
 }
